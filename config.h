@@ -218,6 +218,7 @@ static Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ ControlMask,          XK_Return,      newterm,        {.i =  0} },
 	{ MODKEY,               XK_Return,      newterm,        {.i =  0} },
+	{ MODKEY,               XK_l,           copyurl,        {.i =  0} },
 };
 
 /*
