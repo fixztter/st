@@ -98,46 +98,51 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+float alpha = 1;
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
-	/* 8 normal colors */
-	"black",
-	"red3",
-	"green3",
-	"yellow3",
-	"blue2",
-	"magenta3",
-	"cyan3",
-	"gray90",
+      /* 8 normal colors */
+  [0] = "#000000", /* black   */
+  [1] = "#d54e53", /* red     */
+  [2] = "#b9ca4a", /* green   */
+  [3] = "#e6c547", /* yellow  */
+  [4] = "#7aa6da", /* blue    */
+  [5] = "#c397d8", /* magenta */
+  [6] = "#70c0ba", /* cyan    */
+  [7] = "#424242", /* white   */
 
-	/* 8 bright colors */
-	"gray50",
-	"red",
-	"green",
-	"yellow",
-	"#5c5cff",
-	"magenta",
-	"cyan",
-	"white",
+  /* 8 bright colors */
+  [8]  = "#666666", /* black   */
+  [9]  = "#ff3334", /* red     */
+  [10] = "#9ec400", /* green   */
+  [11] = "#e7c547", /* yellow  */
+  [12] = "#7aa6da", /* blue    */
+  [13] = "#b77ee0", /* magenta */
+  [14] = "#54ced6", /* cyan    */
+  [15] = "#2a2a2a", /* white   */
 
-	[255] = 0,
-
-	/* more colors can be added after 255 to use with DefaultXX */
-	"#cccccc",
-	"#555555",
-	"gray90", /* default foreground colour */
-	"black", /* default background colour */
+  /* special colors */
+  [256] = "#000000", /* background */
+  [257] = "#eaeaea", /* foreground */
 };
 
-float alpha = 1;
 /*
  * Default colors (colorname index)
  * foreground, background, cursor, reverse cursor
  */
-unsigned int defaultfg = 258;
-unsigned int defaultbg = 259;
-unsigned int defaultcs = 256;
+unsigned int defaultfg = 257;
+unsigned int defaultbg = 256;
+unsigned int defaultcs = 257;
 static unsigned int defaultrcs = 257;
+
+/*
+ * Colors used, when the specific fg == defaultfg. So in reverse mode this
+ * will reverse too. Another logic would only make the simple feature too
+ * complex.
+ */
+static unsigned int defaultitalic = 7;
+static unsigned int defaultunderline = 7;
 
 /*
  * Default shape of cursor
